@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+
 <html>
 <head>
     <title>Loading Data from a Static JSON String - fusioncharts.com</title>
@@ -15,7 +15,22 @@
 <body>
 <div id="chart"></div>
 <%@page import="fusioncharts.FusionCharts" %>
+<%@ page import="java.io.File" %>
+<%@ page import="jdk.nashorn.internal.parser.JSONParser" %>
+<%@ page import="java.nio.file.Files" %>
+<%@ page import="java.nio.charset.Charset" %>
+<%@ page import="java.nio.file.Paths" %>
 <%
+
+    // access the json file stored somewhere
+    // parse to String
+
+    File file = (File)request.getAttribute("file");
+
+    String jsonString = new String(Files.readAllBytes(Paths.get(file.getPath())), Charset.defaultCharset());
+
+
+
     FusionCharts columnChart= new FusionCharts(
             // chartType
             "column2d",
@@ -26,9 +41,11 @@
             // chartContainer
             "chart",
             // dataFormat
+            // either json string or jsonURL
+            //if using jsonURL, then the json file hast to be hosted somewhere
+            //if using json string, then hson file will have to be parsed into Java String
             "json",
-            "{\"chart\": {  \"caption\": \"Monthly revenue for last year\",\"subCaption\": \"Harry’s SuperMart\",\"xAxisName\": \"Month\",\"yAxisName\": \"Revenues (In USD)\",\"numberPrefix\": \"$\",\"theme\": \"zune\"},\"data\": [{\"label\": \"Jan\",\"value\": \"420000\"}, {\"label\": \"Feb\",\"value\": \"810000\"}, {\"label\": \"Mar\",\"value\": \"720000\"}, {\"label\": \"Apr\",\"value\": \"550000\"}, {\"label\": \"May\",\"value\": \"910000\"}, {\"label\": \"Jun\",\"value\": \"510000\"}, {\"label\": \"Jul\",\"value\": \"680000\"}, {\"label\": \"Aug\",\"value\": \"620000\"}, {\"label\": \"Sep\",\"value\": \"610000\"}, {\"label\": \"Oct\",\"value\": \"490000\"}, {\"label\": \"Nov\",\"value\": \"900000\"}, {\"label\": \"Dec\",\"value\": \"730000\"}]}");
-%>
+            jsonString);%>
 <%=columnChart.render()%>
 </body>
 </html>

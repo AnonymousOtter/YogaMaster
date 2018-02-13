@@ -1,5 +1,6 @@
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.text.ParseException;
+import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -36,28 +37,30 @@ public class FileUploadServlet extends HttpServlet {
             fileSaveDir.mkdir();
         }
 
+        String fileName = "";
         for (Part part : request.getParts()) {
-            String fileName = extractFileName(part);
+            fileName = extractFileName(part);
             // refines the fileName in case it is an absolute path
             fileName = new File(fileName).getName();
-            part.write(savePath + File.separator + fileName);
+            part.write(savePath + File.separator + fileName); //writing the file into the created file path
         }
 
-
-        //open the newly uploaded file
-        //apply algorithm to test symmetry
-        //edit the csv file
-        //forward the csv file back to jsp handler or render the graph and send the graph back to client
+        //access the newly uploaded file
+        String fileToRead = savePath + File.separator + fileName;
+        File file = new File(fileToRead);
 
 
 
 
+        //apply algorithm to test symmetry, returns an object
+        // convert object to json
+        //store somewhere
 
 
-
-        request.setAttribute("message", "Upload has been done successfully!");
+        request.setAttribute("file", file);
         getServletContext().getRequestDispatcher("/message.jsp").forward(
                 request, response);
+
     }
     /**
      * Extracts file name from HTTP header content-disposition

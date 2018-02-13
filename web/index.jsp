@@ -4,15 +4,21 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>File Upload</title>
+    <link rel="stylesheet" href="CSS/uploadPage.css">
 </head>
 <body>
 <center>
-    <h1>File Upload</h1>
-    <form method="post" action="UploadServlet"
+    <h1>Yoga Symmetry Analyser</h1>
+
+
+        <form method="post" action="UploadServlet" id="uploadBtn"
           enctype="multipart/form-data">
-        Select file to upload: <input type="file" name="file" size="6000" /><br />
-        <br /> <input type="submit" value="Upload" />
-    </form>
+       Upload .csf file
+            <input type="file" name="file" size="6000" /><br />
+        <br /> <input type="submit" value="Analyse" />
+        </form>
+
+
 </center>
 </body>
 </html>
