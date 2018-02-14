@@ -13,7 +13,7 @@
 
         <form method="post" action="UploadServlet" id="uploadBtn"
           enctype="multipart/form-data">
-       Upload .csf file
+        Upload .csf file
             <input type="file" name="file" size="6000" /><br />
         <br /> <input type="submit" value="Analyse" />
         </form>

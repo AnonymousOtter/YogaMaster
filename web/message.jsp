@@ -23,14 +23,12 @@
 <%
 
     // access the json file stored somewhere
-    // parse to String
-
     File file = (File)request.getAttribute("file");
 
+    // Parse the file into a string
     String jsonString = new String(Files.readAllBytes(Paths.get(file.getPath())), Charset.defaultCharset());
 
-
-
+    // Create the chart
     FusionCharts columnChart= new FusionCharts(
             // chartType
             "column2d",
@@ -46,7 +44,10 @@
             //if using json string, then hson file will have to be parsed into Java String
             "json",
             jsonString);%>
+
+// Render the chart using the FusionCharts JavaScript
 <%=columnChart.render()%>
+
 </body>
 </html>
 
