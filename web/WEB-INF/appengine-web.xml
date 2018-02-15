@@ -3,12 +3,17 @@
     <version>1.0</version>
     <threadsafe>true</threadsafe>
     <runtime>java8</runtime>
+
     <static-files>
         <include path="/**.html" >
         </include>
         <include path="/**.jsp" >
         </include>
-        <include path="/**.java" >
-        </include>
     </static-files>
+
+    <resource-files>
+        <include path="/**.java" />
+    </resource-files>
+
+
 </appengine-web-app>

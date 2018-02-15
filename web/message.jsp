@@ -11,6 +11,7 @@
 <head>
     <title>Loading Data from a Static JSON String - fusioncharts.com</title>
     <script src="/FusionCharts/fusioncharts.js"></script>
+    <link rel="stylesheet" href="CSS/uploadPage.css">
 </head>
 <body>
 <div id="chart"></div>
@@ -31,13 +32,13 @@
     // Create the chart
     FusionCharts columnChart= new FusionCharts(
             // chartType
-            "column2d",
+            "multiaxisline",
             // chartId
-            "chart1",
+            "chart-container1",
             // chartWidth, chartHeight
             "600","400",
             // chartContainer
-            "chart",
+            "chart-container",
             // dataFormat
             // either json string or jsonURL
             //if using jsonURL, then the json file hast to be hosted somewhere
