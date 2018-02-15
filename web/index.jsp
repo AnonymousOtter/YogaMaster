@@ -11,7 +11,7 @@
     <h1>Yoga Symmetry Analyser</h1>
 
 
-        <form method="post" action="UploadServlet" id="uploadBtn"
+        <form action="/UploadServlet" method="post" id="uploadBtn"
           enctype="multipart/form-data">
         Upload .csf file
             <input type="file" name="file" size="6000" /><br />
