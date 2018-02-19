@@ -471,7 +471,6 @@ public class SymmetryAnalyser {
         String allTime = "";
 
         for (TimeObject t : all) {
-            System.out.println(t.getTime());
             allTime = allTime + t.getTime().substring(11, 20) + "|";
 
         }
@@ -537,16 +536,13 @@ public class SymmetryAnalyser {
 
         HashMap<String, String> dataToProcess = new HashMap<String, String>();
 
-        try (FileWriter jsonfile = new FileWriter(outputPath + "/json.txt")) {
+        try (FileWriter jsonfile = new FileWriter(outputPath + File.separator + "symmetry.txt")) {
 
             jsonfile.write(everything.toJSONString());
 
-            String symmetry = new String (outputPath + "/json.txt");
+            String symmetryPath = new String (outputPath + File.separator + "symmetry.txt");
 
-            dataToProcess.put("symmetry", symmetry);
-
-            System.out.println();
-            System.out.println("Successfully Copied JSON Object to File...");
+            dataToProcess.put("symmetry", symmetryPath);
         }
 
         // -------------------------------------------------------------------------------------------------------------------------
@@ -755,21 +751,17 @@ public class SymmetryAnalyser {
 
         everythingError.put("dataset", datasetError);
 
-        try (FileWriter jsonErrorfile = new FileWriter( outputPath + "/jsonError.txt")) {
+        try (FileWriter jsonErrorfile = new FileWriter( outputPath + File.separator + "jsonError.txt")) {
 
             jsonErrorfile.write(everythingError.toJSONString());
 
-            String error = new String (outputPath +  "/jsonError.txt");
-            System.out.println(error);
-            dataToProcess.put("error", error);
+            String errorPath = new String (outputPath +  File.separator + "jsonError.txt");
 
-            System.out.println();
-            System.out.println("Successfully Copied JSON Object to File...");
+            dataToProcess.put("error", errorPath);
+
         }
 
         inputStream.close();
-
-        System.out.println("DONE");
 
         return dataToProcess;
 

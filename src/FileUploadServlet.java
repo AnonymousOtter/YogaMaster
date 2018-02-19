@@ -1,11 +1,4 @@
-package servlet;
-
 import algorithm.SymmetryAnalyser;
-import entity.Sensor;
-import entity.TimeObject;
-import entity.Wrist;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -15,11 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 
 @WebServlet("/UploadServlet")
@@ -74,6 +64,8 @@ public class FileUploadServlet extends HttpServlet {
         request.setAttribute("file", dataToProcess);
         getServletContext().getRequestDispatcher("/message.jsp").forward(
                 request, response);
+
+
 
     }
     /**
