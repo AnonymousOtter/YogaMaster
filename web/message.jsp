@@ -11,62 +11,79 @@
 <head>
     <title>Loading Data from a Static JSON String - fusioncharts.com</title>
     <script src="/FusionCharts/fusioncharts.js"></script>
-    <link rel="stylesheet" href="CSS/uploadPage.css">
+    <link rel="stylesheet" href="CSS/chart.css">
+
 </head>
 <body>
 <div id="chart"></div>
 <%@page import="fusioncharts.FusionCharts" %>
 <%@ page import="java.io.File" %>
-<%@ page import="jdk.nashorn.internal.parser.JSONParser" %>
 <%@ page import="java.nio.file.Files" %>
 <%@ page import="java.nio.charset.Charset" %>
 <%@ page import="java.nio.file.Paths" %>
-<%
+<%@ page import="java.util.HashMap" %>
 
+<%
     // access the json file stored somewhere
-    File file = (File)request.getAttribute("file");
+    HashMap <String, String> fileToProcess = (HashMap) request.getAttribute("file");
+
+    String symmetryPath = fileToProcess.get("symmetry");
+    String errorPath = fileToProcess.get("error");
+
+    File symmetry = new File (symmetryPath);
+    File error = new File (errorPath);
+
+    System.out.println("SYMMETRY: " + symmetryPath);
+    System.out.println("ERROR: " + errorPath);
 
     // Parse the file into a string
-    String jsonString = new String(Files.readAllBytes(Paths.get(file.getPath())), Charset.defaultCharset());
+    String jsonStringSymmetry = new String(Files.readAllBytes(Paths.get(symmetry.getPath())), Charset.defaultCharset());
+    String jsonStringError = new String(Files.readAllBytes(Paths.get(error.getPath())), Charset.defaultCharset());
 
     // Create the chart
-    FusionCharts columnChart= new FusionCharts(
-            // chartType
-            "multiaxisline",
+    FusionCharts symmetryChart = new FusionCharts(
+
+            /// chartType
+            "zoomline",
             // chartId
-            "chart-container1",
+            "chart1",
             // chartWidth, chartHeight
             "600","400",
             // chartContainer
-            "chart-container",
+            "chart",
             // dataFormat
-            // either json string or jsonURL
-            //if using jsonURL, then the json file hast to be hosted somewhere
-            //if using json string, then hson file will have to be parsed into Java String
             "json",
-            jsonString);%>
+            //data source
+            jsonStringSymmetry);%>
 
-// Render the chart using the FusionCharts JavaScript
-<%=columnChart.render()%>
+<br>
+<br>
+<div id="symmetryChart">
+    <%=symmetryChart.render()%>
+</div>
+
+<%
+    // Create the chart
+    FusionCharts errorChart= new FusionCharts(
+
+            /// chartType
+            "zoomline",
+            // chartId
+            "chart1",
+            // chartWidth, chartHeight
+            "1800","1200",
+            // chartContainer
+            "chart",
+            // dataFormat
+            "json",
+            //data source
+            jsonStringError);%>
+
+Where is the chart??????????
+<div id="errorChart">
+    <%=errorChart.render()%>
+</div>
+
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-<%--<html>--%>
-<%--<head>--%>
-    <%--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">--%>
-
-    <%--<title>Upload</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h2>${requestScope.message}</h2>--%>
-<%--<p>We will insert the graph here! Maybe :)</p>--%>
-<%--</body>--%>
-<%--</html>--%>

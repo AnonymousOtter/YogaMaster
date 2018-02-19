@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="CSS/uploadPage.css">
 </head>
 <body>
-<center>
+
     <h1>Yoga Symmetry Analyser</h1>
 
 
@@ -19,6 +19,6 @@
         </form>
 
 
-</center>
+
 </body>
 </html>

@@ -1,0 +1,8 @@
+<root>
+    <item name='javax.servlet.annotation.MultipartConfig'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+    <item name='javax.servlet.annotation.WebServlet'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

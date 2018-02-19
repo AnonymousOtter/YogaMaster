@@ -11,9 +11,6 @@
         </webroots>
       </configuration>
     </facet>
-    <facet type="app-engine-standard" name="Google App Engine Standard">
-      <configuration />
-    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -22,18 +19,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.84" level="application_server_libraries" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://C:/Servers/jboss-5.0.0.GA" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="json-lib-2.4-jdk15" level="project" />
-    <orderEntry type="library" name="jackson-dataformat-properties-2.9.0.pr4" level="project" />
-    <orderEntry type="library" name="jackson-core-2.9.0.pr4" level="project" />
+    <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.5" level="application_server_libraries" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>
