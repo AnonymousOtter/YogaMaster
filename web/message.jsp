@@ -79,7 +79,6 @@
             //data source
             jsonStringError);%>
 
-Where is the chart??????????
 <div id="errorChart">
     <%=errorChart.render()%>
 </div>
