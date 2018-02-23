@@ -1,67 +1,53 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: espinajohn
-  Date: 12/02/2018
-  Time: 7:40 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Loading Data from a Static JSON String - fusioncharts.com</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Upload</title>
     <script src="/FusionCharts/fusioncharts.js"></script>
     <link rel="stylesheet" href="CSS/chart.css">
-
 </head>
 <body>
-<div id="chart"></div>
+<h2>Result of Symmetry Analysis:</h2>
+
+<div id="chart1"></div>
+
 <%@page import="fusioncharts.FusionCharts" %>
-<%@ page import="java.io.File" %>
-<%@ page import="java.nio.file.Files" %>
-<%@ page import="java.nio.charset.Charset" %>
-<%@ page import="java.nio.file.Paths" %>
 <%@ page import="java.util.HashMap" %>
+<%@ page import="java.io.File" %>
 
 <%
     // access the json file stored somewhere
     HashMap <String, String> fileToProcess = (HashMap) request.getAttribute("file");
 
-    String symmetryPath = fileToProcess.get("symmetry");
-    String errorPath = fileToProcess.get("error");
+    String symmetry = fileToProcess.get("symmetry");
+    String error = fileToProcess.get("error");
 
-    File symmetry = new File (symmetryPath);
-    File error = new File (errorPath);
 
-    System.out.println("SYMMETRY: " + symmetryPath);
-    System.out.println("ERROR: " + errorPath);
-
-    // Parse the file into a string
-    String jsonStringSymmetry = new String(Files.readAllBytes(Paths.get(symmetry.getPath())), Charset.defaultCharset());
-    String jsonStringError = new String(Files.readAllBytes(Paths.get(error.getPath())), Charset.defaultCharset());
-
-    // Create the chart
+// Create the chart
     FusionCharts symmetryChart = new FusionCharts(
 
-            /// chartType
+            // chartType
             "zoomline",
             // chartId
-            "chart1",
+            "symmetryChart",
             // chartWidth, chartHeight
             "600","400",
             // chartContainer
-            "chart",
+            "chart1",
             // dataFormat
             "json",
-            //data source
-            jsonStringSymmetry);%>
+            symmetry);
+%>
+<%=symmetryChart.render()%>
 
 <br>
 <br>
-<div id="symmetryChart">
-    <%=symmetryChart.render()%>
-</div>
+<br>
 
+<div id="chart2"></div>
 <%
     // Create the chart
     FusionCharts errorChart= new FusionCharts(
@@ -69,19 +55,17 @@
             /// chartType
             "zoomline",
             // chartId
-            "chart1",
+            "errorChart",
             // chartWidth, chartHeight
-            "1800","1200",
+            "600","400",
             // chartContainer
-            "chart",
+            "chart2",
             // dataFormat
             "json",
             //data source
-            jsonStringError);%>
+            error);%>
 
-<div id="errorChart">
-    <%=errorChart.render()%>
-</div>
+<%=errorChart.render()%>
 
 
 </body>

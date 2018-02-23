@@ -475,7 +475,7 @@ public class SymmetryAnalyser {
 
         }
 
-        allTime = allTime.substring(0, allTime.length() - 1);
+        allTime = allTime.substring(0, allTime.length());
 
         String caption = "Values of Accelerometer";
         String subcaption = "Split by Left and Right Wrist";
@@ -536,14 +536,15 @@ public class SymmetryAnalyser {
 
         HashMap<String, String> dataToProcess = new HashMap<String, String>();
 
-        try (FileWriter jsonfile = new FileWriter(outputPath + File.separator + "symmetry.txt")) {
-
-            jsonfile.write(everything.toJSONString());
-
-            String symmetryPath = new String (outputPath + File.separator + "symmetry.txt");
-
-            dataToProcess.put("symmetry", symmetryPath);
-        }
+        dataToProcess.put("symmetry", everything.toJSONString());
+//        try (FileWriter jsonfile = new FileWriter(outputPath + File.separator + "symmetry.txt")) {
+//
+//            jsonfile.write(everything.toJSONString());
+//
+//            String symmetryPath = new String (outputPath + File.separator + "symmetry.txt");
+//
+//            dataToProcess.put("symmetry", symmetryPath);
+//        }
 
         // -------------------------------------------------------------------------------------------------------------------------
         // ERROR JSON CREATOR
@@ -603,24 +604,24 @@ public class SymmetryAnalyser {
 
         }
 
-        lavXSt = lavXSt.substring(0, lavXSt.length() - 1);
-        lgvXSt = lgvXSt.substring(0, lgvXSt.length() - 1);
-        lmvXSt = lmvXSt.substring(0, lmvXSt.length() - 1);
-        lavYSt = lavYSt.substring(0, lavYSt.length() - 1);
-        lgvYSt = lgvYSt.substring(0, lgvYSt.length() - 1);
-        lmvYSt = lmvYSt.substring(0, lmvYSt.length() - 1);
-        lavZSt = lavZSt.substring(0, lavZSt.length() - 1);
-        lgvZSt = lgvZSt.substring(0, lgvZSt.length() - 1);
-        lmvZSt = lmvZSt.substring(0, lmvZSt.length() - 1);
-        ravXSt = ravXSt.substring(0, ravXSt.length() - 1);
-        rgvXSt = rgvXSt.substring(0, rgvXSt.length() - 1);
-        rmvXSt = rmvXSt.substring(0, rmvXSt.length() - 1);
-        ravYSt = ravYSt.substring(0, ravYSt.length() - 1);
-        rgvYSt = rgvYSt.substring(0, rgvYSt.length() - 1);
-        rmvYSt = rmvYSt.substring(0, rmvYSt.length() - 1);
-        ravZSt = ravZSt.substring(0, ravZSt.length() - 1);
-        rgvZSt = rgvZSt.substring(0, rgvZSt.length() - 1);
-        rmvZSt = rmvZSt.substring(0, rmvZSt.length() - 1);
+        lavXSt = lavXSt.substring(0, lavXSt.length() );
+        lgvXSt = lgvXSt.substring(0, lgvXSt.length() );
+        lmvXSt = lmvXSt.substring(0, lmvXSt.length() );
+        lavYSt = lavYSt.substring(0, lavYSt.length() );
+        lgvYSt = lgvYSt.substring(0, lgvYSt.length() );
+        lmvYSt = lmvYSt.substring(0, lmvYSt.length() );
+        lavZSt = lavZSt.substring(0, lavZSt.length() );
+        lgvZSt = lgvZSt.substring(0, lgvZSt.length() );
+        lmvZSt = lmvZSt.substring(0, lmvZSt.length() );
+        ravXSt = ravXSt.substring(0, ravXSt.length() );
+        rgvXSt = rgvXSt.substring(0, rgvXSt.length() );
+        rmvXSt = rmvXSt.substring(0, rmvXSt.length() );
+        ravYSt = ravYSt.substring(0, ravYSt.length() );
+        rgvYSt = rgvYSt.substring(0, rgvYSt.length() );
+        rmvYSt = rmvYSt.substring(0, rmvYSt.length() );
+        ravZSt = ravZSt.substring(0, ravZSt.length() );
+        rgvZSt = rgvZSt.substring(0, rgvZSt.length() );
+        rmvZSt = rmvZSt.substring(0, rmvZSt.length() );
 
         lavXOb.put("seriesName", "Left Accel X");
         lavXOb.put("anchorBgColor", "#876EA1");
@@ -719,7 +720,7 @@ public class SymmetryAnalyser {
             allTimeE = allTimeE + t.getTime().substring(12, 20) + "|";
         }
 
-        allTimeE = allTimeE.substring(0, allTimeE.length() - 1);
+        allTimeE = allTimeE.substring(0, allTimeE.length() );
 
         chartInfo.clear();
 
@@ -751,15 +752,17 @@ public class SymmetryAnalyser {
 
         everythingError.put("dataset", datasetError);
 
-        try (FileWriter jsonErrorfile = new FileWriter( outputPath + File.separator + "jsonError.txt")) {
+        dataToProcess.put("error", everythingError.toJSONString());
 
-            jsonErrorfile.write(everythingError.toJSONString());
-
-            String errorPath = new String (outputPath +  File.separator + "jsonError.txt");
-
-            dataToProcess.put("error", errorPath);
-
-        }
+//        try (FileWriter jsonErrorfile = new FileWriter( outputPath + File.separator + "jsonError.txt")) {
+//
+//            jsonErrorfile.write(everythingError.toJSONString());
+//
+//            String errorPath = new String (outputPath +  File.separator + "jsonError.txt");
+//
+//            dataToProcess.put("error", errorPath);
+//
+//        }
 
         inputStream.close();
 
